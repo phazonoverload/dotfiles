@@ -155,3 +155,5 @@ bash "$DOTFILES_DIR/link.sh"
 echo ""
 echo "=== Setup Complete ==="
 echo "Log out and back in (or run 'zsh') for shell changes to take effect."
+
+touch ~/.hushlogin
