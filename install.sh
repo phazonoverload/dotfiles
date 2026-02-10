@@ -4,8 +4,13 @@ set -e
 # =============================================================================
 # Ubuntu Machine Setup Script
 # Adapted for fresh Ubuntu installs
-# Run: bash <(curl -Ls https://raw.githubusercontent.com/<user>/dotfiles/main/install.sh)
+#
+# Run:
+#   bash <(curl -Ls https://raw.githubusercontent.com/phazonoverload/dotfiles/main/install.sh)
 # =============================================================================
+
+DOTFILES_REPO="https://github.com/phazonoverload/dotfiles.git"
+DOTFILES_DIR="$HOME/.dotfiles"
 
 echo "Starting Ubuntu machine setup..."
 
@@ -25,10 +30,26 @@ sudo apt install -y \
   gnupg
 
 # =============================================================================
-# Git
+# Git (install early so we can clone the dotfiles repo)
 # =============================================================================
 
 sudo apt install -y git
+
+# =============================================================================
+# Clone Dotfiles Repo
+# =============================================================================
+
+if [ -d "$DOTFILES_DIR" ]; then
+  echo "Dotfiles repo already exists at $DOTFILES_DIR, pulling latest..."
+  git -C "$DOTFILES_DIR" pull
+else
+  echo "Cloning dotfiles repo..."
+  git clone "$DOTFILES_REPO" "$DOTFILES_DIR"
+fi
+
+# =============================================================================
+# Configure Git
+# =============================================================================
 
 echo -n 'Git username: '
 read username
@@ -85,8 +106,11 @@ fi
 # Node.js via Volta
 # =============================================================================
 
-curl https://get.volta.sh | bash
 export VOLTA_HOME="$HOME/.volta"
+
+curl https://get.volta.sh | bash -s -- --skip-setup
+
+# Source volta into current session immediately
 export PATH="$VOLTA_HOME/bin:$PATH"
 
 volta install node@latest
@@ -98,7 +122,7 @@ volta install node@lts
 
 npm install -g @github/copilot
 echo ""
-echo "Run 'copilot' to authenticate Copilot CLI."
+echo "Run 'github-copilot-cli auth' to authenticate Copilot CLI."
 
 # =============================================================================
 # Zsh + Oh My Zsh
@@ -113,7 +137,7 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$HOME/.
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
 # Set zsh as default shell
-chsh -s $(which zsh)
+chsh -s "$(which zsh)"
 
 # =============================================================================
 # Starship Prompt
@@ -124,8 +148,6 @@ curl -sS https://starship.rs/install.sh | sh -s -- --yes
 # =============================================================================
 # Link Dotfiles
 # =============================================================================
-
-DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 echo "Linking dotfiles from $DOTFILES_DIR..."
 bash "$DOTFILES_DIR/link.sh"
