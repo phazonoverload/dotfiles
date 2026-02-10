@@ -1,0 +1,25 @@
+# Make tab completion case-insensitive
+set completion-ignore-case on
+
+# Show all matches on ambiguous completion immediately (no double-tab)
+set show-all-if-ambiguous on
+set show-all-if-unmodified on
+
+# Color completion results by file type (like ls)
+set colored-stats on
+
+# Append a slash to completed directory names
+set mark-directories on
+set mark-symlinked-directories on
+
+# Show common prefix before cycling through matches
+set completion-prefix-display-length 2
+set colored-completion-prefix on
+
+# Up/Down arrow searches history filtered by current input
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+
+# Ctrl+Left/Right for word jumping
+"\e[1;5D": backward-word
+"\e[1;5C": forward-word
