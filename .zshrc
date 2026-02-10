@@ -23,7 +23,7 @@ source $ZSH/oh-my-zsh.sh
 # Environment
 # =============================================================================
 
-export EDITOR="code --wait"
+export EDITOR="fresh"
 export VISUAL="$EDITOR"
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
