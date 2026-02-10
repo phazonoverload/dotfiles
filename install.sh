@@ -166,6 +166,16 @@ echo ""
 echo "Run 'github-copilot-cli auth' to authenticate Copilot CLI."
 
 # =============================================================================
+# Claude Code
+# =============================================================================
+
+if ! command -v claude &> /dev/null; then
+  curl -fsSL https://claude.ai/install.sh | bash
+else
+  echo "Claude Code already installed, skipping..."
+fi
+
+# =============================================================================
 # Zsh + Oh My Zsh
 # =============================================================================
 
