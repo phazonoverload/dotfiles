@@ -54,4 +54,17 @@ if [ -f "$DOTFILES_DIR/starship.toml" ]; then
   echo "  LINK starship.toml -> $dest"
 fi
 
+# opencode config goes to ~/.config/opencode/opencode.json
+if [ -f "$DOTFILES_DIR/opencode.json" ]; then
+  mkdir -p "$HOME/.config/opencode"
+  dest="$HOME/.config/opencode/opencode.json"
+  if [ -f "$dest" ] && [ ! -L "$dest" ]; then
+    mkdir -p "$BACKUP_DIR"
+    cp "$dest" "$BACKUP_DIR/opencode.json"
+    echo "  BACKUP opencode.json -> $BACKUP_DIR/opencode.json"
+  fi
+  ln -sf "$DOTFILES_DIR/opencode.json" "$dest"
+  echo "  LINK opencode.json -> $dest"
+fi
+
 echo "Done."
