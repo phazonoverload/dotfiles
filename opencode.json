@@ -1,0 +1,79 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "opencode-go/glm-5",
+  "autoupdate": true,
+  "agent": {
+    "superpowers:brainstorming": {
+      "model": "github-copilot/claude-sonnet-4.6"
+    },
+    "superpowers:writing-plans": {
+      "model": "github-copilot/gpt-5.3-codex"
+    },
+    "superpowers:executing-plans": {
+      "model": "opencode-go/glm-5"
+    },
+    "superpowers:subagent-driven-development": {
+      "model": "opencode-go/mini-max-m2.5"
+    },
+    "superpowers:requesting-code-review": {
+      "model": "github-copilot/gpt-5.3-codex"
+    },
+    "superpowers:receiving-code-review": {
+      "model": "opencode-go/glm-5"
+    },
+    "superpowers:systematic-debugging": {
+      "model": "github-copilot/claude-sonnet-4.6"
+    },
+    "superpowers:test-driven-development": {
+      "model": "opencode-go/glm-5"
+    },
+    "superpowers:verification-before-completion": {
+      "model": "opencode-go/mini-max-m2.5"
+    },
+    "superpowers:writing-skills": {
+      "model": "github-copilot/gpt-5.3-codex"
+    },
+    "superpowers:finishing-a-development-branch": {
+      "model": "opencode-go/mini-max-m2.5"
+    },
+    "superpowers:using-git-worktrees": {
+      "model": "opencode-go/mini-max-m2.5"
+    },
+    "superpowers:dispatching-parallel-agents": {
+      "model": "opencode-go/mini-max-m2.5"
+    },
+    "superpowers:using-superpowers": {
+      "model": "opencode-go/mini-max-m2.5"
+    }
+  },
+  "mcp": {
+    "netlify": {
+      "enabled": false,
+      "type": "local",
+      "command": ["npx", "-y", "@netlify/mcp"]
+    },
+    "railway": {
+      "enabled": false,
+      "type": "local",
+      "command": ["npx", "-y", "@railway/mcp-server"]
+    },
+    "directus": {
+      "enabled": false,
+      "type": "remote",
+      "url": "https://directus.lws.io/mcp?access_token=DIRECTUS_ACCESS_TOKEN"
+    },
+    "github": {
+      "enabled": false,
+      "type": "remote",
+      "headers": {
+        "Authorization": "Bearer GITHUB_PAT"
+      },
+      "url": "https://api.githubcopilot.com/mcp/"
+    }
+  },
+  "server": {
+    "port": 4096,
+    "hostname": "0.0.0.0",
+    "mdns": true
+  }
+}
