@@ -53,6 +53,19 @@ if [ -z "$SSH_AUTH_SOCK" ]; then
 fi
 
 # =============================================================================
+# Odds and sods
+# =============================================================================
+
+export APIFY_CLI_INSTALL="/root/.apify"
+export PATH="$APIFY_CLI_INSTALL/bin:$PATH"
+
+serve() {
+  tailscale serve --bg --https ${1} http://localhost:${1}
+}
+
+export PATH="/root/.opencode/bin:$PATH"
+
+# =============================================================================
 # Starship Prompt (must be last)
 # =============================================================================
 
