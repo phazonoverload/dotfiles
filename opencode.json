@@ -13,7 +13,7 @@
       "model": "opencode-go/glm-5"
     },
     "superpowers:subagent-driven-development": {
-      "model": "opencode-go/mini-max-m2.5"
+      "model": "opencode-go/minimax-m2.5"
     },
     "superpowers:requesting-code-review": {
       "model": "github-copilot/gpt-5.3-codex"
@@ -28,22 +28,22 @@
       "model": "opencode-go/glm-5"
     },
     "superpowers:verification-before-completion": {
-      "model": "opencode-go/mini-max-m2.5"
+      "model": "opencode-go/minimax-m2.5"
     },
     "superpowers:writing-skills": {
       "model": "github-copilot/gpt-5.3-codex"
     },
     "superpowers:finishing-a-development-branch": {
-      "model": "opencode-go/mini-max-m2.5"
+      "model": "opencode-go/minimax-m2.5"
     },
     "superpowers:using-git-worktrees": {
-      "model": "opencode-go/mini-max-m2.5"
+      "model": "opencode-go/minimax-m2.5"
     },
     "superpowers:dispatching-parallel-agents": {
-      "model": "opencode-go/mini-max-m2.5"
+      "model": "opencode-go/minimax-m2.5"
     },
     "superpowers:using-superpowers": {
-      "model": "opencode-go/mini-max-m2.5"
+      "model": "opencode-go/minimax-m2.5"
     }
   },
   "mcp": {
